@@ -28,9 +28,11 @@ while ask_opponent_name == True:
         except ValueError:
             if opponent == "":
                 print("Please enter a valid team name.")
+            elif opponent == my_team:
+                print("Please enter a team name that is not your own. I'm not dumb.")
             else:
                 check_opponent_name = False
-    if opponent == "done":
+    if opponent.lower() == "done":
         ask_opponent_name = False
     else:
         teams.append(opponent)

@@ -2,18 +2,16 @@
 
 #Welcome the user and ask for the name of their team
 print("Welcome to the Super Tournament Points Calculation system")
-enter_my_team = True
-while enter_my_team == True:
+check_team_name = True
+while check_team_name == True:
     my_team = input("Enter the name of your team: ")
-    try:
-        check_my_team = int(my_team)
+    if my_team.isdigit():
         print("Please enter a valid team name.")
-    except ValueError:
-        if my_team == "":
-            print("Please enter a valid team name.")
-        else:
-            enter_my_team = False
-
+    elif my_team.replace(" ", "") == "":
+        print("Please enter a valid team name.")
+    else:
+        check_my_team = False
+ #FIX THE LOOOOOOOP
 #Collect team name's of the opponents, check if it is a string and add it to a list
 teams = []
 print("Enter the name of your opponents (enter 'done' when finished)")
@@ -22,21 +20,19 @@ while ask_opponent_name == True:
     check_opponent_name = True
     while check_opponent_name == True:
         opponent = input("Enter the name of an opponent: ")
-        try:
-            number_opponent_name = int(opponent)
+        if opponent.isdigit():
             print("Please enter a valid team name.")
-        except ValueError:
-            if opponent == "":
-                print("Please enter a valid team name.")
-            elif opponent == my_team:
-                print("Please enter a team name that is not your own. I'm not dumb.")
-            else:
-                check_opponent_name = False
-    if opponent.lower() == "done":
+        elif opponent.replace(" ", "") == "":
+            print("Please enter a valid team name.")                  
+        elif opponent.lower() == my_team.lower():
+            print("Please enter a team name that is not your own. I'm not dumb.")
+        else:
+            check_opponent_name = False
+    if opponent == "done":
         ask_opponent_name = False
     else:
         teams.append(opponent)
-
+            
 #Print and collect Results
 points = []
 #Sets it so it repeats for the amount of teams my team versus

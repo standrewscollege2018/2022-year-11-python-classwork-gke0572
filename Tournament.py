@@ -10,8 +10,8 @@ while check_team_name == True:
     elif my_team.replace(" ", "") == "":
         print("Please enter a valid team name.")
     else:
-        check_my_team = False
- #FIX THE LOOOOOOOP
+        check_team_name = False
+
 #Collect team name's of the opponents, check if it is a string and add it to a list
 teams = []
 print("Enter the name of your opponents (enter 'done' when finished)")

@@ -17,7 +17,7 @@ while main_loop == True:
     print("The vehicles are:")
     for i in range(0, len(cars)):
         if cars[i][2] == True:
-            print(f"{i+1}.{cars[i][0]} {cars[i][1]} - Unavailable")  
+            print(f"{i+1}. {cars[i][0]} {cars[i][1]} - Unavailable")  
         else:
             print(f"{i+1}. {cars[i][0]} {cars[i][1]}")
 
@@ -51,9 +51,19 @@ while main_loop == True:
                             print("Please enter a valid name.")
                         elif name.replace(" ", "") == "":
                             print("Please enter a valid name.")
-                            #Check with Mr Adams how to check if it is just characters
                         else:
+                            check_characters = False
+                            for character in name:
+                                if character.isalpha() == False:
+                                    print("Please enter a valid name.")
+                                    check_characters = True
+                                    break
+                                else:
+                                    pass
+                        if check_characters == False:
                             check_name = False
+                        else:
+                            pass
                     cars[number_vehicle][3] = name
                     print(f"Thanks {name}")
                     check_number_vehicle = False

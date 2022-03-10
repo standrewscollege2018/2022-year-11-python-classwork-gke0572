@@ -9,20 +9,21 @@ cars = [["Suzuki Van", "(2)", False, ""],
         ["Toyota Previa", "(7)", False, ""],
         ["Toyota Hi Ace", "(12)", False, ""],
         ["Toyota Hi Ace", "(12)", False, ""]]
-
+booked_cars = 0
 main_loop = True
 while main_loop == True:
     #Introduce the program and display vehicles for hire
+    print("")
     print("Welcome to the University vehicle rental system.")
+    print("")
     print("The vehicles are:")
     for i in range(0, len(cars)):
         if cars[i][2] == True:
             print(f"{i+1}. {cars[i][0]} {cars[i][1]} - Unavailable")  
         else:
             print(f"{i+1}. {cars[i][0]} {cars[i][1]}")
-
+    print("")
     #Choose a vehicle to book and checks that it is valid
-    booked_cars = 0
     check_number_vehicle = True
     while check_number_vehicle == True:
         try:
@@ -42,12 +43,16 @@ while main_loop == True:
                     number_vehicle = number_vehicle - 1
                     cars[number_vehicle][2] = True
                     booked_cars = booked_cars + 1
+                    if booked_cars == 9:
+                        main_loop = False
+                        check_number_vehicle = False
                     print(f"You have booked the {cars[number_vehicle][0]}.")
 
                     #Asks for name and adds too list, thanks name
                     check_characters = False
                     check_name = True
                     while check_name == True:
+                        print("")
                         name = input("What is your name? ")
                         if name.isdigit():
                             print("Please enter a valid name.")
@@ -58,7 +63,9 @@ while main_loop == True:
                         else:
                             check_characters = False
                             for character in name:
-                                if character.isalpha() == False:
+                                if character == " ":
+                                    pass
+                                elif character.isalpha() == False:
                                     print("Please enter a valid name.")
                                     check_characters = True
                                     break
@@ -76,12 +83,17 @@ while main_loop == True:
                 print("Please enter a valid integer.")
        
 #Print Daily Summary
+print("")
 print("Daily Summary")
+print("")
 for v in range(0, len(cars)):
     if cars[v][2] == True:
         print(f"{cars[v][0]} - {cars[v][3]}")
         cars[v][2] = False
         cars[v][3] = ""
+    elif booked_cars == 0:
+        print("No cars were booked")
+        break
     else:
         pass
         

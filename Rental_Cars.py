@@ -9,6 +9,7 @@ cars = [["Suzuki Van", "(2)", False, ""],
         ["Toyota Previa", "(7)", False, ""],
         ["Toyota Hi Ace", "(12)", False, ""],
         ["Toyota Hi Ace", "(12)", False, ""]]
+# Counter that records how many cars are booked
 booked_cars = 0
 main_loop = True
 while main_loop == True:
@@ -23,11 +24,12 @@ while main_loop == True:
         else:
             print(f"{i+1}. {cars[i][0]} {cars[i][1]}")
     print("")
-    #Choose a vehicle to book and checks that it is valid
+    #Choose a vehicle to book and checks that it is valid (integer, correct range)
     check_number_vehicle = True
     while check_number_vehicle == True:
         try:
             number_vehicle = int(input("Which vehicle would you like to book? "))
+            # If 0 is entered, end loop
             if number_vehicle == 0:
                 main_loop = False
                 check_number_vehicle = False
@@ -77,7 +79,7 @@ while main_loop == True:
                             pass
                     name = name.title()
                     cars[number_vehicle][3] = name
-                    print(f"Thanks {name}")
+                    print(f"Thanks {name}.")
                     check_number_vehicle = False
         except ValueError:
                 print("Please enter a valid integer.")
@@ -96,4 +98,3 @@ for v in range(0, len(cars)):
         break
     else:
         pass
-        
